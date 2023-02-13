@@ -1,10 +1,7 @@
-import logging
-import logging.config
 import os
 from pathlib import Path
 
 import environ
-from django.utils.log import DEFAULT_LOGGING
 
 env = environ.Env(
     # set casting, default value
@@ -14,13 +11,13 @@ env = environ.Env(
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+environ.Env.read_env(BASE_DIR / ".env")
 
-SECRET_KEY = "django-insecure-z#&)0ww+oo=cxbx4g!e^@*6-wa@bz23!4^l=v14+e3(%dmk=2h"
+SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
 
 
 DJANGO_APPS = [
@@ -30,9 +27,15 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "rest_framework",
+    "django_filters",
+    "django_countries",
+    "phonenumber_field",
+]
 
 LOCAL_APPS = [
     "apps.users.apps.UsersConfig",
@@ -70,6 +73,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
+""" DATABASES = {
+    "default": {
+        "ENGINE": env("POSTGRES_ENGINE"),
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
+        "HOST": env("PG_HOST"),
+        "PORT": env("PG_PORT"),
+    }
+}
+DATABASES["default"]["ATOMIC_REQUESTS"] = True """
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -99,6 +113,11 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Logging
+""" import logging
+import logging.config
+
+from django.utils.log import DEFAULT_LOGGING
+
 logger = logging.getLogger(__name__)
 
 LOG_LEVEL = "INFO"
@@ -123,7 +142,7 @@ logging.config.dictConfig(
                 "level": "INFO",
                 "class": "logging.FileHandler",
                 "formatter": "file",
-                "filename": "logs/shop_eline.log",
+                "filename": "logs/shopeline.log",
             },
             "django.server": DEFAULT_LOGGING["handlers"]["django.server"],
         },
@@ -133,4 +152,4 @@ logging.config.dictConfig(
             "django.server": DEFAULT_LOGGING["loggers"]["django.server"],
         },
     }
-)
+) """

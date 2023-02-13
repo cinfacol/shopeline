@@ -1,3 +1,14 @@
+.vscode
+.idea
+.DS_Store
+*.egg-info
+*.log
+*.pyc
+
+staticfiles
+mediafiles
+frontend/node_modules
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
