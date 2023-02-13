@@ -27,7 +27,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.sites",
+    # "django.contrib.sites",
 ]
 
 THIRD_PARTY_APPS = [
@@ -109,6 +109,10 @@ USE_TZ = True
 
 STATIC_URL = "staticfiles/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = []
+
+MEDIA_URL = "mediafiles/"
+MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
