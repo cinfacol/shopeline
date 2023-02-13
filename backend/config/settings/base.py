@@ -73,18 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-""" DATABASES = {
-    "default": {
-        "ENGINE": env("POSTGRES_ENGINE"),
-        "NAME": env("POSTGRES_DB"),
-        "USER": env("POSTGRES_USER"),
-        "PASSWORD": env("POSTGRES_PASSWORD"),
-        "HOST": env("PG_HOST"),
-        "PORT": env("PG_PORT"),
-    }
-}
-DATABASES["default"]["ATOMIC_REQUESTS"] = True """
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -117,7 +105,7 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Logging
-""" import logging
+import logging
 import logging.config
 
 from django.utils.log import DEFAULT_LOGGING
@@ -156,4 +144,4 @@ logging.config.dictConfig(
             "django.server": DEFAULT_LOGGING["loggers"]["django.server"],
         },
     }
-) """
+)
