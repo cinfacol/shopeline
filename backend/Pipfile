@@ -17,6 +17,7 @@ psycopg2-binary = "*"
 flake8 = "*"
 black = "*"
 isort = "*"
+djoser = "*"
 
 [dev-packages]
 
