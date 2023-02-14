@@ -1,13 +1,8 @@
-.vscode
-.idea
-.DS_Store
-*.egg-info
-*.log
-*.pyc
+*.logs
 
 staticfiles
 mediafiles
-frontend/node_modules
+*/node_modules
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -19,7 +14,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -139,4 +133,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-

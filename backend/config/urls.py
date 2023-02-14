@@ -7,6 +7,8 @@ from django.urls import include, path
 
 urlpatterns = [
     path("supersecret/", admin.site.urls),
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.jwt")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Shop eline Admin"
