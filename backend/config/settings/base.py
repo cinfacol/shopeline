@@ -31,7 +31,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.sites",
+    "django.contrib.sites",
 ]
 
 THIRD_PARTY_APPS = [
@@ -42,6 +42,7 @@ THIRD_PARTY_APPS = [
     "djoser",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
+    "djcelery_email",
 ]
 
 LOCAL_APPS = [
@@ -54,6 +55,8 @@ LOCAL_APPS = [
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
