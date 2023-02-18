@@ -1,7 +1,7 @@
 from apps.ratings.serializers import RatingSerializer
 from django_countries.serializer_fields import CountryField
 from phonenumber_field.serializerfields import PhoneNumberField
-from rest_framework import fields, serializers
+from rest_framework import serializers
 
 from .models import Profile
 

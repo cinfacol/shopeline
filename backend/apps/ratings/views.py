@@ -1,9 +1,8 @@
+from apps.profiles.models import Profile
 from django.contrib.auth import get_user_model
 from rest_framework import permissions, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-
-from apps.profiles.models import Profile
 
 from .models import Rating
 
@@ -35,7 +34,8 @@ def create_agent_review(request, profile_id):
         return Response(formatted_response, status=status.HTTP_400_BAD_REQUEST)
 
     else:
-        review = Rating.objects.create(
+        # review = Rating.objects.create(
+        Rating.objects.create(
             rater=request.user,
             agent=agent_profile,
             rating=data["rating"],

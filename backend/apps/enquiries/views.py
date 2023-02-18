@@ -1,9 +1,8 @@
+from config.settings.development import DEFAULT_FROM_EMAIL
 from django.core.mail import send_mail
 from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-
-from config.settings.development import DEFAULT_FROM_EMAIL
 
 from .models import Enquiry
 
@@ -28,5 +27,5 @@ def send_enquiry_email(request):
 
         return Response({"success": "Your Enquiry was successfully submitted"})
 
-    except:
+    except Exception:
         return Response({"fail": "Enquiry was not sent. Please try again"})

@@ -1,4 +1,5 @@
-from .base import *
+from .base import *  # NOQA
+from .base import env
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 # EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
