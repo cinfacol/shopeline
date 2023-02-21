@@ -7,11 +7,13 @@ services:
       dockerfile: ./docker/local/django/Dockerfile
     container_name: django_api
     volumes:
-      - .:/application
-      - static_volume:/app/staticfiles
-      - media_volume:/app/mediafiles
-    ports:
-      - "8000:8000"
+      # - ./backend:/app
+      - static_volume:/home/app/backend/staticfiles
+      - media_volume:/home/app/backend/mediafiles
+    # ports:
+    #   - "8000:8000"
+    expose:
+      - "8000"
     env_file:
       - ./backend/.env
     depends_on:
@@ -49,6 +51,22 @@ services:
       eline-react:
         aliases:
           - "eline_host2"
+
+  nginx:
+    restart: always
+    depends_on:
+      - api
+    container_name: nginx
+    volumes:
+      - static_volume:/home/app/backend/staticfiles
+      - media_volume:/home/app/backend/mediafiles
+    build:
+      context: ./backend/docker/local/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - eline-react
 
 networks:
   eline-react:
@@ -101,21 +119,3 @@ volumes:
     #     - postgres-db
     #   networks:
     #     - eline-react
-
-    # nginx:
-    #   restart: always
-    #   depends_on:
-    #     - api
-    #   container_name: nginx
-    #   volumes:
-    #     - static_volume:/app/staticfiles
-    #     - media_volume:/app/mediafiles
-    #   build:
-    #     context: ./backend/docker/local/nginx
-    #     dockerfile: Dockerfile
-    #   ports:
-    #     - "8080:80"
-    #   networks:
-    #     - eline-react
-
-
