@@ -24,6 +24,10 @@ celery = "*"
 redis = "*"
 flower = "*"
 django-celery-email = "*"
+pytest-django = "*"
+pytest-factoryboy = "*"
+faker = "*"
+pytest-cov = "*"
 
 [dev-packages]
 

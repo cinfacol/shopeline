@@ -36,7 +36,7 @@ volume:
 	docker volume inspect shopeline_postgres_data
 
 eline-db:
-	docker compose exec postgres-db psql --username=postgres --dbname=shop-eline
+	docker compose exec postgres-db psql --username=postgres --dbname=shopeline
 
 test:
 	docker compose exec api pytest -p no:warnings --cov=.
